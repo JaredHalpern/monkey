@@ -7,6 +7,19 @@ import (
 	"monkey/token"
 )
 
+type Lexer struct {
+	input		string
+	position	int // current position in input, ie: current char
+	readPosition	int // current reading position in input, ie: after current char
+	ch		byte
+}
+
+func New(input string) *Lexer {
+	l := &Lexer(input: input)
+	return l
+}
+
+
 func TestNextToken(t *testing.T) {
 	input := `=+(){},;`
 	
