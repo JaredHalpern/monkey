@@ -2,11 +2,6 @@
 
 package lexer
 
-import (
-	"testing"
-	"monkey/token"
-)
-
 type Lexer struct {
 	input		string
 	position	int 	// current position in input, ie: current char
@@ -15,7 +10,7 @@ type Lexer struct {
 }
 
 func New(input string) *Lexer {
-	l := &Lexer(input: input)
+	l := &Lexer{input: input}
 	l.readChar()	
 	return l
 }
@@ -27,5 +22,5 @@ func (l *Lexer) readChar() {
 		l.ch = l.input[l.readPosition]
 	}
 	l.position = l.readPosition
-	l.readPosition += l
+	l.readPosition += 1
 }
