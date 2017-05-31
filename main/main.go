@@ -12,7 +12,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("Hello %s", user.Username)
+	fmt.Printf("Hello %s\n", user.Username)
 	fmt.Printf("Please type commands..")
 	repl.Start(os.Stdin, os.Stdout)
 }
