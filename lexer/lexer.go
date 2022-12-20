@@ -1,15 +1,16 @@
 package lexer
 
 import (
-	"jaredhalpern.com/token"
 	"fmt"
+
+	"jaredhalpern.com/token"
 )
 
 type Lexer struct {
-	input		string
-	position	int // points to current character
-	readPosition	int // position in input after current character; ie: the next character after current
-	ch		byte	// currenct character being examined; only supports ASCII, not Unicode or UTF-8; change to `rune` type and change how we read characters if/when convert
+	input        string
+	position     int  // points to current character
+	readPosition int  // position in input after current character; ie: the next character after current
+	ch           byte // currenct character being examined; only supports ASCII, not Unicode or UTF-8; change to `rune` type and change how we read characters if/when convert
 }
 
 func New(input string) *Lexer {
@@ -61,8 +62,8 @@ func (l *Lexer) NextToken() token.Token {
 		} else if isDigit(l.ch) {
 			tok.Type = token.INT
 			tok.Literal = l.readNumber()
-		 } else {
-			 fmt.Printf("here - token: %q", l.ch)
+		} else {
+			fmt.Printf("here - token: %q", l.ch)
 			tok = newToken(token.ILLEGAL, l.ch)
 		}
 	}
@@ -84,7 +85,7 @@ func (l *Lexer) readNumber() string {
 	for isDigit(l.ch) {
 		l.readChar()
 	}
-	return l.input[position: l.position]
+	return l.input[position:l.position]
 }
 
 func isLetter(ch byte) bool {
