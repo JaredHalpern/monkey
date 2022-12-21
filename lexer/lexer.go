@@ -1,8 +1,6 @@
 package lexer
 
 import (
-	"fmt"
-
 	"jaredhalpern.com/token"
 )
 
@@ -62,8 +60,9 @@ func (l *Lexer) NextToken() token.Token {
 		} else if isDigit(l.ch) {
 			tok.Type = token.INT
 			tok.Literal = l.readNumber()
+			return tok
 		} else {
-			fmt.Printf("here - token: %q", l.ch)
+			// fmt.Printf("here - token: %q", l.ch)
 			tok = newToken(token.ILLEGAL, l.ch)
 		}
 	}
